@@ -5,11 +5,9 @@ import requests
 import plotly.express as px
 import dash_bootstrap_components as dbc
 import os
-import plotly.graph_objects as go
 
 
 #GET EARTHQUAKE DATA FROM API'S
-
 #function to extract places, magnitudes, longitudes, latitudes and add onto lists
 def extract_spec_features(mag_limit, features=[], places=[], magnitudes=[], longitudes=[], latitudes=[]):
     """extract info about earthquake, filters earthquakes by magnitude"""
@@ -91,7 +89,6 @@ day_eq_5 = extract_spec_features(5.5, eq_day_features, places_day_5, mag_day_5, 
 url_hour = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_hour.geojson"
 response_hour = requests.get(url_hour)
 response_hour = response_hour.json()
-
 #earthquakes with magnitude 1 and higher:
 eq_hour_features = response_hour["features"]
 places_hour, mag_hour, long_hour, lat_hour = [], [], [], []
@@ -103,8 +100,7 @@ eq_hour_4 = extract_spec_features(4, eq_hour_features, places_hour_4, mag_hour_4
 places_hour_5, mag_hour_5, long_hour_5, lat_hour_5 = [], [], [], []
 eq_hour_5 = extract_spec_features(5.5,eq_hour_features, places_hour_5, mag_hour_5, long_hour_5, lat_hour_5)
 
-#get earthquake totals:
-#function to get total count based on magnitude
+#FUNCTION TO GET TOTAL EATHQUAKES BASED ON MAGNITUDE: 
 def eq_count(magnitude_limit, features=[]):
     eq_count=[]
     for eq in features:
@@ -116,6 +112,7 @@ def eq_count(magnitude_limit, features=[]):
 #COLOURS FOR VISUALIZATIONS
 #colour scales for graphs
 colours_graph = px.colors.named_colorscales()
+
 
 #CARDS 
 #dashboard showing current total earthquakes over the past hour, day, week, month
@@ -160,7 +157,7 @@ dashboard_cards = dbc.CardGroup([
 
 
 
-#dropdown cards - to be displayed on the left of the visualization
+#dropdown cards to provide options for theme and magnitude filter - to be displayed on the left of the visualization
 hour_dropdown= dbc.Card([
     dbc.CardBody([
         html.H5("Earthquakes Over the Past Hour"),
@@ -210,6 +207,7 @@ month_dropdown= dbc.Card([
 
 #CREATE INSTANCE OF APP
 app = Dash(__name__, external_stylesheets=[dbc.themes.SUPERHERO])
+server = app.server
 
 
 #APP LAYOUT
@@ -256,6 +254,7 @@ app.layout = dbc.Container([
 ], fluid=True)
 
 
+
 #CALLBACKS
 #total earthquakes counter - update counter based on magnitude range selected by user
 @callback(
@@ -287,7 +286,7 @@ def magnitude_tracker(chosen_mag):
     return eq_hour, eq_day, eq_week, eq_month
 
 
-
+#VISUALIZATIONS
 #earthquakes in the past hour
 @callback(
     Output(component_id="plot-hour", component_property="figure"),
@@ -468,6 +467,7 @@ def week_figure(chosen_colour, chosen_mag):
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     return fig
+
 
 
 #past 30 days earthquakes

@@ -2,7 +2,7 @@ import requests
 import plotly.express as px
 import pandas as pd
 
-#BELOW IS ROUGH CODE USED TO MAKE APP
+#BELOW IS ROUGH CODE USED TO MAKE THE EARTHQUAKE TRACKING APP
 #creating earthquake tracker webpage - below are code to be used in the app
 #will use these plots to make a plotly dash app
 
@@ -19,7 +19,6 @@ def extract_features(features, places, magnitudes, longitudes, latitudes):
         longitudes.append(long)
         latitudes.append(lat)
     return places, magnitudes, longitudes, latitudes
-
 
 
 #api for all earthquakes worldwide in the past month with a magnitude of 1.0 or higher
@@ -41,9 +40,9 @@ response_dict["metadata"]
 #Collect features data
 eq_features = response_dict["features"]
 
-#extract specified features
+#extract specified features usingextract features
 magnitudes, places, longitudes, latitudes = [],[],[],[]
-month_eq = extract_for_plot(eq_features, magnitudes, places, longitudes, latitudes)
+month_eq = extract_features(eq_features, magnitudes, places, longitudes, latitudes)
 
 
 #worldwide earthquakes for the past 7 days with a magnitude of 1.0 or higher
@@ -65,7 +64,7 @@ eq_week_features = response_2_dict["features"]
 
 #extract place, magnitude, coordinates
 places_week, mag_week, long_week, lat_week = [], [], [], []
-week_eq = extract_for_plot(eq_week_features, places_week, mag_week, long_week, lat_week )
+week_eq = extract_features(eq_week_features, places_week, mag_week, long_week, lat_week )
 
 
 #earthquakes for the past day
@@ -109,7 +108,8 @@ places_hour, mag_hour, long_hour, lat_hour = [], [], [], []
 results = extract_features(eq_hour_features, places_hour, mag_hour, long_hour, lat_hour)
 
 
-#visualizations for App:
+#visualizations to be used in App:
+#30 days
 fig = px.scatter_geo(
     lon=longitudes,
     lat=latitudes,
@@ -120,8 +120,7 @@ fig = px.scatter_geo(
     projection="natural earth",)
 fig.show()
 
-
-
+#7 days
 fig = px.scatter_geo(
     lon=long_week,
     lat=lat_week,
@@ -132,8 +131,7 @@ fig = px.scatter_geo(
     projection="natural earth",)
 fig.show()
 
-
-
+#1 day
 fig = px.scatter_geo(
     lon=long_day,
     lat=lat_day,
@@ -144,9 +142,7 @@ fig = px.scatter_geo(
     projection="natural earth",)
 fig.show()
 
-
-
-
+#1 hour
 fig = px.scatter_geo(
     lon=long_hour,
     lat=lat_hour,
@@ -158,7 +154,7 @@ fig = px.scatter_geo(
 fig.show()
 
 #NEW ADDITION FOR APP
-#want to be able to adjust dataset based on magnitude: 1, 4, 6
+#want to be able to adjust dataset for visualization based on magnitude: 1, 4, 5.5
 def extract_spec_features(mag_limit, features=[], places=[], magnitudes=[], longitudes=[], latitudes=[]):
     """extract info about earthquake, filters earthquakes by magnitude"""
     try:
@@ -180,11 +176,11 @@ def extract_spec_features(mag_limit, features=[], places=[], magnitudes=[], long
     finally:
         return places, magnitudes, longitudes, latitudes
 
-#specifically extract earthquakes with a magnitude over 6
+#specifically extract earthquakes with a magnitude at or over 5.5
 magnitudes, places, longitudes, latitudes = [],[],[],[]
 results = extract_spec_features(5.5, eq_features, places, magnitudes, longitudes, latitudes)
 
-#earthquake total count based on magnitude
+#Earthquake total count based on magnitude - to be displayed below title of app 
 eq_count_4=[]
 def eq_count(magnitude_limit, features=[]):
     eq_count=[]
@@ -192,8 +188,9 @@ def eq_count(magnitude_limit, features=[]):
         if eq["properties"]["mag"] >= magnitude_limit:
             eq_count.append(eq)
     return eq_count
-eq_count_4 = eq_count(6, eq_day_features)
-        
+
+eq_count_4 = eq_count(6, eq_day_features) 
+#length determines how many earthquake features dictionaries are in the list, which determines number of earthquakes
 len(eq_count_4)
 
 
