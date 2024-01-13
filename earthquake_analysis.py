@@ -2,7 +2,7 @@ import requests
 import plotly.express as px
 import pandas as pd
 
-
+#BELOW IS ROUGH CODE USED TO MAKE APP
 #creating earthquake tracker webpage - below are code to be used in the app
 #will use these plots to make a plotly dash app
 
@@ -85,7 +85,7 @@ eq_day_features = response_day["features"]
 
 #extract place, magnitude, coordinates
 places_day, mag_day, long_day, lat_day = [], [], [], []
-day_eq = extract_for_plot(eq_day_features, places_day, mag_day, long_day, lat_day)
+day_eq = extract_features(eq_day_features, places_day, mag_day, long_day, lat_day)
 
 
 
@@ -106,7 +106,7 @@ eq_hour_features = response_hour["features"]
 
 #extract place, magnitude, coordinates
 places_hour, mag_hour, long_hour, lat_hour = [], [], [], []
-results = extract_for_plot(eq_hour_features, places_hour, mag_hour, long_hour, lat_hour)
+results = extract_features(eq_hour_features, places_hour, mag_hour, long_hour, lat_hour)
 
 
 #visualizations for App:
