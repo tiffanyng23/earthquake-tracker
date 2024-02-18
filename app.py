@@ -297,55 +297,58 @@ def magnitude_tracker(chosen_mag):
 def hour_figure(chosen_colour, chosen_mag):
         if chosen_mag =="1.0 and Higher":
             if len(mag_hour) != 0:
-                fig = px.scatter_geo(
+                fig = px.scatter_mapbox(
                     lon=long_hour,
                     lat=lat_hour,
                     size = mag_hour,
                     color= mag_hour,
                     hover_name = places_hour,
-                    color_continuous_scale = chosen_colour,
-                    projection="natural earth",)
+                    color_continuous_scale = chosen_colour,)
+
             else:
-                fig = px.scatter_geo(
+                fig = px.scatter_mapbox(
                     lon=[],
-                    lat=[],
-                    projection="natural earth")
+                    lat=[],)
+            fig.update_layout(
+                mapbox_style="open-street-map")
             fig.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)")
         elif chosen_mag == "4.0 and Higher":
             if len(mag_hour_4) != 0:
-                fig = px.scatter_geo(
+                fig = px.scatter_mapbox(
                     lon=long_hour_4,
                     lat=lat_hour_4,
                     size = mag_hour_4,
                     color= mag_hour_4,
                     hover_name = places_hour_4,
-                    color_continuous_scale = chosen_colour,
-                    projection="natural earth",)
+                    color_continuous_scale = chosen_colour,)
+
             else:
-                fig = px.scatter_geo(
+                fig = px.scatter_mapbox(
                     lon=[],
-                    lat=[],
-                    projection="natural earth")
+                    lat=[],)
+            fig.update_layout(
+                mapbox_style="open-street-map")
             fig.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)")
         else:
             if len(mag_hour_5) != 0:
-                fig = px.scatter_geo(
+                fig = px.scatter_mapbox(
                     lon=long_hour_5,
                     lat=lat_hour_5,
                     size = mag_hour_5,
                     color= mag_hour_5,
                     hover_name = places_hour_5,
-                    color_continuous_scale = chosen_colour,
-                    projection="natural earth",)
+                    color_continuous_scale = chosen_colour,)
+
             else:
-                fig = px.scatter_geo(
+                fig = px.scatter_mapbox(
                     lon=[],
-                    lat=[],
-                    projection="natural earth")
+                    lat=[],)
             fig.update_layout(
                 paper_bgcolor="rgba(0,0,0,0)")
+            fig.update_layout(
+                mapbox_style="open-street-map")
         return fig
 
 #earthquakes in the past day
@@ -358,53 +361,54 @@ def hour_figure(chosen_colour, chosen_mag):
 def day_figure(chosen_colour, chosen_mag):
     if chosen_mag == "1.0 and Higher":
         if len(mag_day) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=long_day,
                 lat=lat_day,
                 size = mag_day,
                 color= mag_day,
                 hover_name = places_day,
-                color_continuous_scale = chosen_colour,
-                projection="natural earth",)
+                color_continuous_scale = chosen_colour,)
+
         else:
             fig = px.scatter_geo(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     elif chosen_mag == "4.0 and Higher":
         if len(mag_day_4) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=long_day_4,
                 lat=lat_day_4,
                 size = mag_day_4,
                 color= mag_day_4,
                 hover_name = places_day_4,
-                color_continuous_scale = chosen_colour,
-                projection="natural earth",)
+                color_continuous_scale = chosen_colour,)
         else:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+            mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     else:
         if len(mag_day_5) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=long_day_5,
                 lat=lat_day_5,
                 size = mag_day_5,
                 color= mag_day_5,
                 hover_name = places_day_5,
-                color_continuous_scale = chosen_colour,
-                projection="natural earth",)
+                color_continuous_scale = chosen_colour,)
         else:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     return fig
@@ -419,7 +423,7 @@ def day_figure(chosen_colour, chosen_mag):
 def week_figure(chosen_colour, chosen_mag):
     if chosen_mag == "1.0 and Higher":
         if len(mag_week) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=long_week,
                 lat=lat_week,
                 size = mag_week,
@@ -427,16 +431,17 @@ def week_figure(chosen_colour, chosen_mag):
                 hover_name = places_week,
                 color_continuous_scale = chosen_colour,)
         else:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
 
     elif chosen_mag == "4.0 and Higher":
         if len(mag_week_4) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=long_week_4,
                 lat=lat_week_4,
                 size = mag_week_4,
@@ -446,24 +451,27 @@ def week_figure(chosen_colour, chosen_mag):
         else:
             fig = px.scatter_geo(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     else:
         if len(mag_week_5) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=long_week_5,
                 lat=lat_week_5,
                 size = mag_week_5,
                 color= mag_week_5,
                 hover_name = places_week_5,
                 color_continuous_scale = chosen_colour,)
+
         else:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     return fig
@@ -480,54 +488,56 @@ def week_figure(chosen_colour, chosen_mag):
 def month_figure(chosen_colour, chosen_mag):
     if chosen_mag == "1.0 and Higher":
         if len(magnitudes) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=longitudes,
                 lat=latitudes,
                 size = magnitudes,
                 color= magnitudes,
                 hover_name = places,
-                color_continuous_scale = chosen_colour,
-                projection="natural earth",)
+                color_continuous_scale = chosen_colour,)
         else:
             fig = px.scatter_geo(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
 
     elif chosen_mag == "4.0 and Higher":
         if len(magnitudes_4) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=longitudes_4,
                 lat=latitudes_4,
                 size = magnitudes_4,
                 color= magnitudes_4,
                 hover_name = places_4,
-                color_continuous_scale = chosen_colour,
-                projection="natural earth",)
+                color_continuous_scale = chosen_colour,)
+            
         else:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=[],
                 lat=[],
                 projection="natural earth")
         fig.update_layout(
+                mapbox_style="open-street-map")
+        fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     else:
         if len(magnitudes_5) != 0:
-            fig = px.scatter_geo(
+            fig = px.scatter_mapbox(
                 lon=longitudes_5,
                 lat=latitudes_5,
                 size = magnitudes_5,
                 color= magnitudes_5,
                 hover_name = places_5,
-                color_continuous_scale = chosen_colour,
-                projection="natural earth",)
+                color_continuous_scale = chosen_colour,)
         else:
             fig = px.scatter_geo(
                 lon=[],
-                lat=[],
-                projection="natural earth")
+                lat=[],)
+        fig.update_layout(
+                mapbox_style="open-street-map")
         fig.update_layout(
             paper_bgcolor="rgba(0,0,0,0)")
     return fig
