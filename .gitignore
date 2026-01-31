@@ -1,9 +1,47 @@
 # Virtual environment
 venv/
+env/
+*.egg-info/
 
 # Python cache files
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
 
 # OS files
 .DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+
+# Ignore compiled files / caches
+*.pyc
+*.pyo
+*.pyd
+
+
+# Ignore temporary / backup files
+*.swp
+*.tmp
+*.bak
+*.orig
+
+
+# Ignore package / build folders
+build/
+dist/
+pip-wheel-metadata/
+
+# Keep requirements and code
+# requirements.txt, main.py, app.py, etc. stay tracked
