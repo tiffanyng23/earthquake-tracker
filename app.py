@@ -2,6 +2,7 @@ from dash import Dash, html, dash_table, dcc, callback, Output, Input
 from flask import Flask
 from flask_caching import Cache
 import requests
+import pandas as pd
 import plotly.express as px
 import dash_bootstrap_components as dbc
 
@@ -15,7 +16,7 @@ cache = Cache(app.server, config={
 })
 
 #FUNCTIONS
-#get earthquake data using api call
+#get earthquake data using api call and convert data to dataframe
 #all earthquakes worldwide within a specified time period
 @cache.memoize(timeout=300)
 def earthquake_data(time_window):
@@ -32,8 +33,33 @@ def earthquake_data(time_window):
     except ValueError as e:
         print(f"Error parsing JSON: {e}")
         earthquake_features = []
-
     return earthquake_features
+
+#convert json to dataframe
+def json_to_df(json_file):
+    # create dictionary for each earthquake, store as a list of dictionaries
+    data_for_df = []
+
+    for eq in json_file:
+        # check that there is required data for each earthquake
+        if eq.get("properties") and eq.get("geometry"):
+            eq_dict = {
+                "id": eq["id"],
+                "magnitude": eq["properties"].get("mag"),
+                "place": eq["properties"].get("place"),
+                "time": eq["properties"].get("time"),
+                "longitude": eq["geometry"]["coordinates"][0],
+                "latitude": eq["geometry"]["coordinates"][1],
+                "depth": eq["geometry"]["coordinates"][2],
+            }
+        # append each dictionary to data_for_df list
+        data_for_df.append(eq_dict)
+
+    #convert data_for_df to a df
+    df = pd.DataFrame(data_for_df)
+    # convert magnitude from string to float
+    df["magnitude"] = pd.to_numeric(df["magnitude"], downcast="float", errors="coerce")
+    return df
 
 #Counts number of earthquakes that meet a specified magnitude threshold
 @cache.memoize(timeout=300)
@@ -45,7 +71,7 @@ def eq_count(magnitude_limit, earthquake_list=[]):
     for earthquake in earthquake_list:
         mag = earthquake["properties"].get("mag")
         # in case magnitude is not recorded
-        if mag is not None and float(mag)>= magnitude_limit:
+        if mag is not None and float(mag) >= magnitude_limit:
             counter+=1
     return counter
 
@@ -62,8 +88,10 @@ summary_dashboard = dbc.CardGroup([
     #select magnitude for total count dropdown card
     dbc.Card([
         dbc.CardBody([
-            html.H5("Select Magnitude Range:"),
-            dcc.Dropdown(options=["1.0", "4.0", "5.5"], value="1.0", id="summary-magnitude", style={"color": "black"}),
+            html.H5("Select a Minimum Magnitude:"),
+            dcc.Slider(0, 10, 1, value=5, marks=None,
+                tooltip={"placement": "bottom", "always_visible": True}, 
+                id="summary-magnitude"),
         ]),
     ]),
     dbc.Card([
@@ -101,8 +129,10 @@ customize_dashboard = dbc.Card([
         dcc.Dropdown(options=colours_graph, value="agsunset", id="dropdown-colour", style={'color': 'black'}),
         html.Label("Select a Time Period:"),
         dcc.Dropdown(options=["hour", "day", "week", "month"], value="month", id="dropdown-time", style={'color': 'black'}),
-        html.Label("Select a Minimum Magnitude Range:"),
-        dcc.Dropdown(options=["1.0", "4.0", "5.5"], value="1.0", id="dropdown-magnitude", style={"color":"black"}),
+        html.Label("Select a Minimum Magnitude:"),
+        dcc.Slider(0, 10, 1, value=5, marks=None,
+                tooltip={"placement": "bottom", "always_visible": True}, 
+                id="slider-magnitude"),
     ])
  ])
 
@@ -138,15 +168,22 @@ app.layout = dbc.Container([
     Output(component_id= "count-month", component_property="children"),
     Input(component_id="summary-magnitude", component_property="value")
 )
+# count earthquakes, filter by magnitude and stratify by time
 def summary_tracker(magnitude):
     magnitude = float(magnitude) 
+    # store earthquake counts by time window in dictionary
+    # time : earthquake count
     eq_totals = {"hour":0, "day":0, "week":0, "month":0}
 
     for time in eq_totals.keys():
-        #api request, collect earthquake data for specified time thresholds (hour, day, month, week)
+        #collect earthquake data for specified time thresholds (hour, day, month, week)
         raw_features = earthquake_data(time)
-        # count earthquakes that fit each time window and magnitude, update dictionary values
-        eq_totals[time] = eq_count(magnitude, raw_features)
+        raw_features = json_to_df(raw_features)
+
+        # count earthquakes that fit requested magnitude, update dictionary values
+        # filter for rows where magnitude meets threshold
+        eq_totals[time] = len(raw_features[raw_features["magnitude"] >= magnitude])
+
     # return each of the values
     return eq_totals["hour"], eq_totals["day"], eq_totals["week"], eq_totals["month"]
 
@@ -157,36 +194,36 @@ def summary_tracker(magnitude):
     Output(component_id="final-plot", component_property="figure"),
     Input(component_id="dropdown-colour", component_property="value"),
     Input(component_id="dropdown-time", component_property="value"),
-    Input(component_id="dropdown-magnitude", component_property="value"),
+    Input(component_id="slider-magnitude", component_property="value"),
 )
 def earthquake_figure(colour, time, magnitude):
     #api request - pull earthquakes for specified time window
     raw_features = earthquake_data(time)
+    raw_features = json_to_df(raw_features)
     
     #filter earthquakes in selected time window that fit magnitude threshold
-    filtered_features =[]
-    for earthquake in raw_features:
-        if float(earthquake["properties"]["mag"]) >= float(magnitude):
-            filtered_features.append(earthquake)
+    filtered_features = raw_features[raw_features["magnitude"] >= magnitude]
 
     # display map with earthquakes
     if len(filtered_features) != 0:
-        fig = px.scatter_mapbox(
-            # loop through features list to get feature for each earthquake
-            lon= [eq["geometry"]["coordinates"][0] for eq in filtered_features],
-            lat= [eq["geometry"]["coordinates"][1] for eq in filtered_features],
-            size = [eq["properties"]["mag"] for eq in filtered_features],
-            color= [eq["properties"]["mag"] for eq in filtered_features],
-            hover_name = [eq["properties"]["place"] for eq in filtered_features],
-            color_continuous_scale = colour,)
+        fig = px.scatter_map(
+            # plotly loops through filtered df row by row and plots earthquake
+            filtered_features,
+            lon= "longitude",
+            lat= "latitude",
+            size = "magnitude",
+            color= "magnitude",
+            hover_name = "place",
+            color_continuous_scale = colour)
     else:
-        fig = px.scatter_mapbox(
+        fig = px.scatter_map(
             lon=[],
             lat=[],)
     
     fig.update_layout(
-        mapbox_style="open-street-map",
-        paper_bgcolor="rgba(0,0,0,0)"
+        map_style="open-street-map",
+        paper_bgcolor="rgba(0,0,0,0)", 
+        dragmode="zoom",
     )
 
     return fig
