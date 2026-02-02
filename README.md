@@ -1,17 +1,17 @@
-### Global Earthquake Tracker Dashboard
+# Global Earthquake Tracker Dashboard
 This is a near live earthquake tracker made using Plotly Dash and the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson">United States Geological Survey (USGS) earthquake API</a>.
 
 ## Project Features
-# Earthquake Counter 
+### Earthquake Counter 
 There is an earthquake counter spanning the top of the page, providing earthquake counts for the last hour, day, week, month within a chosen magnitude range.
 
-# Customization Panel
+### Customization Panel
 On the left side of the app below the Earthquake Counter is a panel to customize the visualizations on the right side.
 
-# Visualizations
+### Visualizations
 The visualizations in this dashboard are a scatter plot, scatter map, and search table. These visualizations are located within the tabs on the dashboard.
 
-# Technologies and Features Implemented
+### Technologies and Features Implemented
 As someone learning more about computer programming/technologies, I wanted to try implementing an API to gather data to create a near real-time tracking tool. I was interested in being able to use the data to create an app that's both interactive and user-driven. This earthquake tracker allows for users to gather specific information they are interested in.
 
 In the future, I hope to implement more detailed information about earthquake events, such as graphing earthquake events by country/region or providing more statistical insights such as: highest/mean magnitude globally or by country, countries/regions with the highest occurences of earthquakes, and visualizations that can filter by country/region. 
@@ -25,13 +25,13 @@ Make sure you are connected to the internet since the dashboard fetches data fro
 4. Run the app. The app will start a local server which allows for the dashboard to be viewed.
 
 ## How to Use the Project
-# Earthquake Counter 
+### Earthquake Counter 
  The earthquake counter can be customized to be based on a specified magnitude range. Note that the magnitude range selected is the minimum magnitude (from 0 to 10). After selecting a magnitude range, the earthquake counter will update to count earthquakes at the chosen magnitude and higher.
 
-# Customization Panel
+### Customization Panel
 The Customization Panel is used to customize the visualizations within the 3 tabs. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), and minimum magnitude range (from 0 to 10). This panel is not used for the Earthquake Counter.
 
-# Visualizations
+### Visualizations
 The visualizations are located within the 3 tabs (Scatter Plot of Earthquakes, Scatter Map of Earthquakes, Search for Earthquake) in the dashboard. Click on each tab to view the visualizations. 
 
 Tabs:
@@ -48,5 +48,6 @@ The scatter map plots earthquake events on a world map using longitude and latit
 Search Table:
 The search table allows for earthquakes events to be filtered/searched by time, location, and magnitude. Similarly to the scatter plot and map, the initial data in the table can be controlled by the customization panel. The table allows for more precise searching of earthquakes such as for occurences in a specific country, date/time, and magnitude.
 
+### License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
 
