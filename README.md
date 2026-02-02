@@ -1,6 +1,8 @@
 # Global Earthquake Tracker Dashboard
 This is a near live earthquake tracker made using Plotly Dash and the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson">United States Geological Survey (USGS) earthquake API</a>.
 
+![Dashboard](images/dashboard.png)
+
 ## Project Features
 ### Earthquake Counter 
 There is an earthquake counter spanning the top of the page, providing earthquake counts for the last hour, day, week, month within a chosen magnitude range.
@@ -27,7 +29,6 @@ Make sure you are connected to the internet since the dashboard fetches data fro
 ## How to Use the Project
 ### Earthquake Counter 
  The earthquake counter can be customized to be based on a specified magnitude range. Note that the magnitude range selected is the minimum magnitude (from 0 to 10). After selecting a magnitude range, the earthquake counter will update to count earthquakes at the chosen magnitude and higher.
- ![Counter](images/counter.png)
 
 
 ### Customization Panel
