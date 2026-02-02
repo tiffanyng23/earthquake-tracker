@@ -8,7 +8,7 @@ This is a near live earthquake tracker made using Plotly Dash and the <a href="h
 There is an earthquake counter spanning the top of the page, providing earthquake counts for the last hour, day, week, month within a chosen magnitude range.
 
 ### Customization Panel
-On the left side of the app below the Earthquake Counter is a panel to customize the visualizations on the right side.
+On the left side of the app below the Earthquake Counter is a panel to customize the visualizations on the right side. Feature selection includes colour theme, time window (earthquakes within the past hour, day, week, month), and a slider to adjust the minimum magnitude range.
 
 ### Visualizations
 The visualizations in this dashboard are a scatter plot, scatter map, and search table. These visualizations are located within the tabs on the dashboard.
@@ -33,7 +33,7 @@ Make sure you are connected to the internet since the dashboard fetches data fro
 
 
 ### Customization Panel
-The Customization Panel is used to customize the visualizations within the 3 tabs. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), and minimum magnitude range (from 0 to 10). This panel is not used for the Earthquake Counter.
+The Customization Panel is used to customize the visualizations. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), and minimum magnitude range (from 0 to 10). This panel is not used for the Earthquake Counter and is used only for the visualizations within the 3 tabs.
 
 
 ### Visualizations
