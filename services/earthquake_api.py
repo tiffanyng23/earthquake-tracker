@@ -1,5 +1,4 @@
 from flask import Flask
-from flask_caching import Cache
 import requests
 import pandas as pd
 

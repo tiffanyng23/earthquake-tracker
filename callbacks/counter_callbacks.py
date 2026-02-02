@@ -1,6 +1,5 @@
 from dash import Dash, callback, Output, Input
 from flask import Flask
-from flask_caching import Cache
 import pandas as pd
 import requests
 from services import earthquake_data, json_to_df, eq_count
