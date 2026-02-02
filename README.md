@@ -27,9 +27,13 @@ Make sure you are connected to the internet since the dashboard fetches data fro
 ## How to Use the Project
 ### Earthquake Counter 
  The earthquake counter can be customized to be based on a specified magnitude range. Note that the magnitude range selected is the minimum magnitude (from 0 to 10). After selecting a magnitude range, the earthquake counter will update to count earthquakes at the chosen magnitude and higher.
+ ![Counter](images/counter.png)
+
 
 ### Customization Panel
 The Customization Panel is used to customize the visualizations within the 3 tabs. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), and minimum magnitude range (from 0 to 10). This panel is not used for the Earthquake Counter.
+![Panel](images/panel.png)
+
 
 ### Visualizations
 The visualizations are located within the 3 tabs (Scatter Plot of Earthquakes, Scatter Map of Earthquakes, Search for Earthquake) in the dashboard. Click on each tab to view the visualizations. 
@@ -41,12 +45,17 @@ Search for Earthquake - contains the search table
 
 Scatter Plot:
 The scatter plot graphs earthquake events by time and magnitude. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
+![Plot](images/plot.png)
+
 
 Scatter Map:
 The scatter map plots earthquake events on a world map using longitude and latitude data, to identidy the location of the earthquake globally. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
+![Map](images/map.png)
+
 
 Search Table:
 The search table allows for earthquakes events to be filtered/searched by time, location, and magnitude. Similarly to the scatter plot and map, the initial data in the table can be controlled by the customization panel. The table allows for more precise searching of earthquakes such as for occurences in a specific country, date/time, and magnitude.
+![Table](images/table.png)
 
 ### License
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
