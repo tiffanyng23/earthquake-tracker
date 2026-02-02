@@ -29,11 +29,11 @@ Make sure you are connected to the internet since the dashboard fetches data fro
 ## How to Use the Project
 ### Earthquake Counter 
  The earthquake counter can be customized to be based on a specified magnitude range. Note that the magnitude range selected is the minimum magnitude (from 0 to 10). After selecting a magnitude range, the earthquake counter will update to count earthquakes at the chosen magnitude and higher.
+ ![Panel](images/counter.png)
 
 
 ### Customization Panel
 The Customization Panel is used to customize the visualizations within the 3 tabs. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), and minimum magnitude range (from 0 to 10). This panel is not used for the Earthquake Counter.
-![Panel](images/panel.png)
 
 
 ### Visualizations
