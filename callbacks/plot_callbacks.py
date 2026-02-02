@@ -1,5 +1,6 @@
 from dash import Dash, callback, Output, Input
 from flask import Flask
+from flask_caching import Cache
 from services import earthquake_data, json_to_df, eq_count
 from layouts.tabs import tabs_layout
 from layouts.summary_cards import summary_dashboard

@@ -12,7 +12,7 @@ def summary_dashboard():
             dbc.CardBody([
                 html.H5("Minimum Magnitude:", className="text-center"),
                 html.Br(),
-                dcc.Slider(0, 10, 1, value=4, marks=None,
+                dcc.Slider(0, 10, 1, value=5, marks=None,
                     tooltip={"placement": "bottom", "always_visible": True}, 
                     id="summary-magnitude"),
             ]),

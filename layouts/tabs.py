@@ -8,19 +8,19 @@ def tabs_layout():
         value="tab-1",
         children=[
             dcc.Tab(
-                label="Scatter Map of Earthquakes", 
+                label="Scatter Plot of Earthquakes", 
                 value="tab-1",
                 children=[
-                    dcc.Graph(id="scatter-map")
+                    dcc.Graph(id="scatter-plot")
                 ],
                 className ="tab-btn", 
                 selected_className="tab-btn--selected", 
             ),
             dcc.Tab(
-                label="Scatter Plot of Earthquakes", 
+                label="Scatter Map of Earthquakes", 
                 value="tab-2",
                 children=[
-                        dcc.Graph(id="scatter-plot")
+                        dcc.Graph(id="scatter-map")
                 ],
                 className ="tab-btn", 
                 selected_className="tab-btn--selected", 
@@ -32,8 +32,8 @@ def tabs_layout():
                         dash_table.DataTable(
                             id="summary-table", # from callback output,has the data and columns
                             filter_action="native",
-                            sort_action="native", # user is allowed to sort columns
-                            sort_mode="multi", # sort multiple columns at once
+                            sort_action="native", # allows user to sort columns
+                            sort_mode="multi", # allows user to sort multiple columns at once
                             style_data={
                                 "color": "rgba(0,0,0,1)",
                                 "backgroundColor": "rgba(220,220,220,1)"

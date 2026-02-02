@@ -11,14 +11,14 @@ def customize_panel():
          dbc.CardBody([
             html.H5("Customize the Earthquake Visual"),
             html.Hr(),
-            html.P("To view earthquakes, zoom out on the map after selecting time window and minimum magnitude."),
+            html.P("Click on the tabs to switch visuals. To view earthquakes in the scatter map, zoom out on the map after selecting the theme, time window, and minimum magnitude."),
             html.Label("Theme:"),
-            dcc.Dropdown(options=colours_graph, value="agsunset", id="dropdown-colour", style={'color': 'black'}),
+            dcc.Dropdown(options=colours_graph, value="blackbody", id="dropdown-colour", style={'color': 'black'}),
             html.Label("Time Window:"),
             dcc.Dropdown(options=["hour", "day", "week", "month"], value="month", id="dropdown-time", style={'color': 'black'}),
             html.Br(),
             html.Label("Minimum Magnitude:"),
-            dcc.Slider(0, 10, 1, value=4, marks=None,
+            dcc.Slider(0, 10, 1, value=5, marks=None,
                      tooltip={"placement": "bottom", "always_visible": True}, 
                      id="slider-magnitude"),
          ])

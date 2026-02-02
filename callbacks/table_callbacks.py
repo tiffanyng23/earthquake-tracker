@@ -1,6 +1,7 @@
 from dash import Dash, dash_table, callback, Output, Input
 from dash.dash_table.Format import Format, Scheme
 from flask import Flask
+from flask_caching import Cache
 from services import earthquake_data, json_to_df, eq_count
 import requests
 import pandas as pd
@@ -20,7 +21,7 @@ def register_table_callbacks(app):
         # filter table by selected magnitide
         filtered_table = table_data[table_data["magnitude"] >= magnitude]
         filtered_table = filtered_table[["time", "place", "magnitude"]]
-        
+
         # dash table properties
         data = filtered_table.to_dict("records")
         columns = [

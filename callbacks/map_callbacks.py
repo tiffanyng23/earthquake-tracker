@@ -1,5 +1,6 @@
 from dash import Dash, callback, Output, Input
 from flask import Flask
+from flask_caching import Cache
 from services import earthquake_data, json_to_df, eq_count
 from layouts.customize_panel import customize_panel
 import requests
@@ -32,6 +33,7 @@ def register_map_callbacks(app):
             size = "magnitude",
             color= "magnitude",
             hover_name = "place",
+            hover_data = ["time", "magnitude", "longitude", "latitude"],
             color_continuous_scale = colour)
         
         fig.update_layout(
