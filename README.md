@@ -37,12 +37,7 @@ The Customization Panel is used to customize the visualizations within the 3 tab
 
 
 ### Visualizations
-The visualizations are located within the 3 tabs (Scatter Plot of Earthquakes, Scatter Map of Earthquakes, Search for Earthquake) in the dashboard. Click on each tab to view the visualizations. 
-
-Tabs:
-Scatter Plot of Earthquakes - contains the scatter plot
-Scatter Map of earthquakes - contains the scatter map
-Search for Earthquake - contains the search table
+The visualizations are located within the 3 tabs (Scatter Plot of Earthquakes, Scatter Map of Earthquakes, Search for Earthquakes) in the dashboard. Click on each tab to view the visualizations. 
 
 Scatter Plot:
 The scatter plot graphs earthquake events by time and magnitude. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
