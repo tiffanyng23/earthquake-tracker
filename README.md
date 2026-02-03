@@ -1,5 +1,5 @@
 # Global Earthquake Tracker Dashboard
-This is a near live earthquake tracker made using Plotly Dash and the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/1.0_month.geojson">United States Geological Survey (USGS) earthquake API</a>.
+This is a near live earthquake tracker made using Plotly Dash and the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">United States Geological Survey (USGS) earthquake API</a>.
 
 ![Dashboard](images/dashboard.png)
 
