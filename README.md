@@ -14,13 +14,11 @@ On the left side of the app below the Earthquake Counter is a panel to customize
 The visualizations in this dashboard are a scatter plot, scatter map, and search table. These visualizations are located within the tabs on the dashboard.
 
 ### Technologies and Features Implemented
-As someone learning more about computer programming/technologies, I wanted to try implementing an API to gather data to create a near real-time tracking tool. I was interested in being able to use the data to create an app that's both interactive and user-driven. This earthquake tracker allows for users to gather specific information they are interested in.
+I was interested in being able to implement an API to create a more dynamic and interactive project that can be used to gather ever-changing insights. This earthquake tracker is user-driven, so it allows for users to gather specific information they are interested in.
 
-In the future, I hope to implement more detailed information about earthquake events, such as graphing earthquake events by country/region or providing more statistical insights such as: highest/mean magnitude globally or by country, countries/regions with the highest occurences of earthquakes, and visualizations that can filter by country/region. 
+In the future, I hope to implement more detailed information about earthquake events. I want to provide more statistical insights such as: highest/mean magnitude globally or by country, countries/regions with the highest occurences of earthquakes, and visualizations that can filter by country/region. 
 
 ## How to Install and Run the Project
-Make sure you are connected to the internet since the dashboard fetches data from the USGS API.
-
 1. Clone the repository.
 2. Set up a Python virtual environment.
 3. Install the packages listed in requirements.txt.
@@ -45,7 +43,7 @@ The scatter plot graphs earthquake events by time and magnitude. The earthquake 
 
 
 Scatter Map:
-The scatter map plots earthquake events on a world map using longitude and latitude data, to identidy the location of the earthquake globally. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
+The scatter map plots earthquake events on a world map using longitude and latitude data, to identify the location of the earthquake globally. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
 ![Map](images/map.png)
 
 
