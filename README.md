@@ -28,13 +28,11 @@ In the future, I hope to implement more detailed information about earthquake ev
 ### Earthquake Counter 
  The earthquake counter can be customized to be based on a specified magnitude range (from 0 to 10) and depth range (from the most shallow and most deep depth in the past month). After selecting a minimum and maximum magnitude and depth range, the earthquake counter will update to count earthquakes within the selected range.
 
- ![Panel](images/counter.png)
+ ![Counter](images/counter.png)
 
 
 ### Customization Panel
 The Customization Panel is used to customize the visualizations. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), magnitude range (from 0 to 10), and depth range (from the most shallow and most deep depth in the past month). This panel is not used for the Earthquake Counter and is used only for the visualizations within the 3 tabs.
-
- ![Panel](images/panel.png)
 
 ### Visualizations
 The visualizations are located within the 3 tabs (Scatter Plot of Earthquakes, Scatter Map of Earthquakes, Search for Earthquakes) in the dashboard. Click on each tab to view the visualizations. 
