@@ -34,22 +34,26 @@ In the future, I hope to implement more detailed information about earthquake ev
 ### Customization Panel
 The Customization Panel is used to customize the visualizations. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), magnitude range (from 0 to 10), and depth range (from the most shallow and most deep depth in the past month). This panel is not used for the Earthquake Counter and is used only for the visualizations within the 3 tabs.
 
+ ![Panel](images/panel.png)
 
 ### Visualizations
 The visualizations are located within the 3 tabs (Scatter Plot of Earthquakes, Scatter Map of Earthquakes, Search for Earthquakes) in the dashboard. Click on each tab to view the visualizations. 
 
 Scatter Plot:
 The scatter plot graphs earthquake events by time and magnitude. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
+
 ![Plot](images/plot.png)
 
 
 Scatter Map:
 The scatter map plots earthquake events on a world map using longitude and latitude data, to identify the location of the earthquake globally. The earthquake events shown can be controlled by the time and magnitude range set in the Customization Panel.
+
 ![Map](images/map.png)
 
 
 Search Table:
 The search table allows for earthquakes events to be filtered/searched by time, location, and magnitude. Similarly to the scatter plot and map, the initial data in the table can be controlled by the customization panel. The table allows for more precise searching of earthquakes such as for occurences in a specific country, date/time, and magnitude.
+
 ![Table](images/table.png)
 
 ### License
