@@ -1,14 +1,17 @@
 # Global Earthquake Tracker Dashboard
-This is a near live earthquake tracker made using Plotly Dash and the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">United States Geological Survey (USGS) earthquake API</a>.
+This is a near live earthquake tracker made using Plotly Dash and an API sourced from the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">United States Geological Survey (USGS)</a>.
+
+Updates (2026/02/04):
+The dashboard has since had a "Depth" range slider added and the "Magnitude" filter has been updated to be a range slider (previously only a minimum magnitude was selected). The range slider allows for users to select a minimum and maximum value. This change is not yet reflected in the screenshots of the dashboard provided.
 
 ![Dashboard](images/dashboard.png)
 
 ## Project Features
 ### Earthquake Counter 
-There is an earthquake counter spanning the top of the page, providing earthquake counts for the last hour, day, week, month within a chosen magnitude range.
+There is an earthquake counter spanning the top of the page, providing earthquake counts for the last hour, day, week, month within a chosen magnitude and depth range.
 
 ### Customization Panel
-On the left side of the app below the Earthquake Counter is a panel to customize the visualizations on the right side. Feature selection includes colour theme, time window (earthquakes within the past hour, day, week, month), and a slider to adjust the minimum magnitude range.
+On the left side of the app below the Earthquake Counter is a panel to customize the visualizations on the right side. Feature selection includes colour theme, time window (earthquakes within the past hour, day, week, month), and a slider to adjust the magnitude and depth range.
 
 ### Visualizations
 The visualizations in this dashboard are a scatter plot, scatter map, and search table. These visualizations are located within the tabs on the dashboard.
@@ -26,12 +29,15 @@ In the future, I hope to implement more detailed information about earthquake ev
 
 ## How to Use the Project
 ### Earthquake Counter 
- The earthquake counter can be customized to be based on a specified magnitude range. Note that the magnitude range selected is the minimum magnitude (from 0 to 10). After selecting a magnitude range, the earthquake counter will update to count earthquakes at the chosen magnitude and higher.
+ The earthquake counter can be customized to be based on a specified magnitude range (from 0 to 10) and depth range (from the most shallow and most deep depth in the past month). After selecting a minimum and maximum magnitude and depth range, the earthquake counter will update to count earthquakes within the selected range.
+
+ 2026/02/04 Update: The dashboard has since had a "Depth" range slider added and the "Magnitude" filter has been updated to be a range slider (previously a minimum magnitude was selected). The screenshot below does not yet reflect this update.
+
  ![Panel](images/counter.png)
 
 
 ### Customization Panel
-The Customization Panel is used to customize the visualizations. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), and minimum magnitude range (from 0 to 10). This panel is not used for the Earthquake Counter and is used only for the visualizations within the 3 tabs.
+The Customization Panel is used to customize the visualizations. The properties that can be customized using this panel are the colour theme for the visualizations (affects the scatter plot and scatter map only), time window (earthquakes within the last hour, day, week, month), magnitude range (from 0 to 10), and depth range (from the most shallow and most deep depth in the past month). This panel is not used for the Earthquake Counter and is used only for the visualizations within the 3 tabs.
 
 
 ### Visualizations
