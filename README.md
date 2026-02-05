@@ -19,7 +19,7 @@ The visualizations in this dashboard are a scatter plot, scatter map, and search
 ### Technologies and Features Implemented
 I was interested in being able to implement an API to create a more dynamic and interactive project that can be used to gather ever-changing insights. This earthquake tracker is user-driven, so it allows for users to gather specific information they are interested in.
 
-In the future, I hope to implement more detailed information about earthquake events. I want to provide more statistical insights such as: highest/mean magnitude globally or by country, countries/regions with the highest occurences of earthquakes, and visualizations that can filter by country/region. 
+In the future, I hope to implement more detailed information about earthquake events such as further statistical insights and visualizations that can filter by country. 
 
 ## How to Install and Run the Project
 1. Clone the repository.
