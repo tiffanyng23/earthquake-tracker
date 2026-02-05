@@ -13,7 +13,7 @@ def register_cache(cache):
 # get earthquake USGS data using api call 
 # convert data to dataframe
 
-# earthquake api call
+# earthquake api call to gather data
 def earthquake_data(time_window):
     @cached.memoize(300)
     def fetch_data(time_window):
@@ -57,13 +57,15 @@ def json_to_df(json_file):
             
         #convert data_for_df to a df
         df = pd.DataFrame(data_for_df)
+
         # convert magnitude from string to float and time to datetime format
         df["time"] = pd.to_datetime(df["time"], unit="ms", errors="coerce")
-        #convert to local time
+        #convert date/time to EST time zone
         df["time"] = df["time"].dt.tz_localize('UTC').dt.tz_convert('America/Toronto')
         # convert time to custom format (year, month, day hour, min, sec)
         df["time"] = df["time"].dt.strftime("%Y-%m-%d %H:%M:%S")
 
+        #convert magnitude to float
         df["magnitude"] = pd.to_numeric(df["magnitude"], downcast="float", errors="coerce")
         return df
     return convert_data(json_file)

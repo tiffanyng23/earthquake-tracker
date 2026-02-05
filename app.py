@@ -4,8 +4,8 @@ from dash.dash_table.Format import Format, Scheme
 from flask import Flask
 from flask_caching import Cache
 from layouts.tabs import tabs_layout
-from layouts.summary_cards import summary_dashboard
-from layouts.customize_panel import customize_panel
+from layouts.summary_cards import depth_range, summary_dashboard
+from layouts.customize_panel import depth_range, customize_panel
 from services import register_cache, earthquake_data, json_to_df, eq_count
 import requests
 import pandas as pd

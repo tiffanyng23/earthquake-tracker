@@ -12,11 +12,12 @@ def register_counter_callbacks(app):
         Output(component_id= "count-day", component_property="children"),
         Output(component_id= "count-week", component_property="children"),
         Output(component_id= "count-month", component_property="children"),
-        Input(component_id="summary-magnitude", component_property="value")
+        Input(component_id="summary-magnitude", component_property="value"),
+        Input(component_id="summary-depth", component_property="value")
     )
     # count earthquakes, filter by magnitude and stratify by time
-    def summary_tracker(magnitude):
-        magnitude = float(magnitude) 
+    def summary_tracker(magnitude, depth):
+        
         # store earthquake counts by time window in dictionary
         # time : earthquake count
         eq_totals = {"hour":0, "day":0, "week":0, "month":0}
@@ -26,9 +27,12 @@ def register_counter_callbacks(app):
             raw_features = earthquake_data(time)
             raw_features = json_to_df(raw_features)
 
-            # count earthquakes that fit requested magnitude, update dictionary values
+            # count earthquakes that fit requested magnitude range, update dictionary values
             # filter for rows where magnitude meets threshold
-            eq_totals[time] = len(raw_features[raw_features["magnitude"] >= magnitude])
-
+            eq_totals[time] = len(raw_features[(raw_features["magnitude"] >= magnitude[0]) 
+                                                & (raw_features["magnitude"] <= magnitude[1])
+                                                & (raw_features["depth"] >= depth[0])
+                                                & (raw_features["depth"] <= depth[1])])
+                                          
         # return each of the values
         return eq_totals["hour"], eq_totals["day"], eq_totals["week"], eq_totals["month"]
