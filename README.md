@@ -1,5 +1,7 @@
 # Global Earthquake Tracker Dashboard
-This is a near live earthquake tracker made using Plotly Dash and an API sourced from the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php">United States Geological Survey (USGS)</a>.
+Project Deployed on Fly: <a href="https://earthquake-tracker-app.fly.dev/" target="_blank" >Earthquake Tracker</a>
+
+This is a near live earthquake tracker made using Plotly Dash and an API sourced from the <a href="https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php" target="_blank">United States Geological Survey (USGS)</a>.
 
 ![Dashboard](images/dashboard.png)
 

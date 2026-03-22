@@ -43,5 +43,8 @@ build/
 dist/
 pip-wheel-metadata/
 
-# Keep requirements and code
-# requirements.txt, main.py, app.py, etc. stay tracked
+#Fly.io Files
+Dockerfile
+.dockerignore
+fly.toml
+Procfile
